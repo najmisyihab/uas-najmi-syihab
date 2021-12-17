@@ -9,10 +9,11 @@ import time
 import altair as alt
 
 import inspect
+from streamlit.logger import get_logger
 import textwrap
 from collections import OrderedDict
 import streamlit as st
-from streamlit.logger import get_logger
+
 
 from PIL import Image
 
@@ -154,30 +155,30 @@ def no1d():
     
     st.markdown(
         f"""
-        #### Negara dengan total produksi keseluruhan tahun terbesar
+        #### Negara terbesar dengan total produksi keseluruhan tahun 
         Negara: {total_produksi_max["name"]}\n
-        Kode negara: {total_produksi_max["kode_negara"]}\n
+        Kode: {total_produksi_max["kode_negara"]}\n
         Region: {total_produksi_max["region"]}\n
         Sub-region: {total_produksi_max["sub-region"]}\n
         Jumlah produksi: {total_produksi_max["produksi"]}\n
 
         #### Negara dengan jumlah produksi terbesar pada tahun {tahun}  
         Negara: {produksi_tahun_max["name"]}\n
-        Kode negara: {produksi_tahun_max["kode_negara"]}\n
+        Kode: {produksi_tahun_max["kode_negara"]}\n
         Region: {produksi_tahun_max["region"]}\n
         Sub-region: {produksi_tahun_max["sub-region"]}\n
         Jumlah produksi: {produksi_tahun_max["produksi"]}\n
 
         #### Negara dengan total produksi keseluruhan tahun terkecil
         Negara: {total_produksi_min["name"]}\n
-        Kode negara: {total_produksi_min["kode_negara"]}\n
+        Kode: {total_produksi_min["kode_negara"]}\n
         Region: {total_produksi_min["region"]}\n
         Sub-region: {total_produksi_min["sub-region"]}\n
         Jumlah produksi: {total_produksi_min["produksi"]}\n
 
         #### Negara dengan jumlah produksi terkecil pada tahun {tahun}  
         Negara: {produksi_tahun_min["name"]}\n
-        Kode negara: {produksi_tahun_min["kode_negara"]}\n
+        Kode: {produksi_tahun_min["kode_negara"]}\n
         Region: {produksi_tahun_min["region"]}\n
         Sub-region: {produksi_tahun_min["sub-region"]}\n
         Jumlah produksi: {produksi_tahun_min["produksi"]}\n
@@ -200,21 +201,20 @@ def no1d():
     produksi_tahun_nol = produksi_tahun_nol.drop(['produksi'], axis=1).rename(columns={"name":"Negara", "kode_negara":"Kode Negara", "region":"Region", "sub-region":"Sub Region"})
     st.dataframe(produksi_tahun_nol)
 
-#home
+
 def home():
 
     st.markdown("<h1 style='text-align: center; color: black;'> Najmi Syihab </h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: center; color: black;'> 12220129 </h2>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align: center; color: black;'> STREAMLIT NEGARA PRODUKSI MINYAK MENTAH </h3>", unsafe_allow_html=True)
 
-#fungsi di panggil dibawah
 
 LOGGER = get_logger(__name__)
 
 
 FITUR = OrderedDict(
     [
-        ("HOME", (home, None)),
+        ("Halaman Utama", (home, None)),
         (
             "1A",
             (
