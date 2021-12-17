@@ -2,13 +2,10 @@
 # NIM : 12220129
 # UAS PEMROGRAMAN KOMPUTER
 
-
-#panggil beberapa library yang dibutuhkan
-
-import streamlit as st
-import time
 import numpy as np
 import pandas as pd
+import streamlit as st
+import time
 import altair as alt
 
 import inspect
@@ -35,9 +32,6 @@ st.markdown(
     """, unsafe_allow_html=True
 )
 
-#-------create function def-------------
-
-# baca data json dan csv
 df1 = pd.read_json("kode_negara_lengkap.json")
 df2 = pd.read_csv("produksi_minyak_mentah.csv")
 df = pd.merge(df2,df1,left_on='kode_negara',right_on='alpha-3')
@@ -45,17 +39,17 @@ df = pd.merge(df2,df1,left_on='kode_negara',right_on='alpha-3')
 list_negara = df["name"].unique().tolist()
 list_negara.sort()
 
-#No 1.A
+#1 bagian A
 def no1a():
 
     data_negara = df["name"].unique().tolist()
     data_negara.sort()
 
-    negara = st.sidebar.selectbox("Pilih Negara", data_negara)
+    negara = st.sidebar.selectbox("Pilih Negara yang ingin dilihat grafiknya", data_negara)
 
     kode = df1[(df1["name"] == negara)]["alpha-3"].to_list()[0]
     df_states = df2[(df2.kode_negara == kode)].copy().set_index("tahun")
-    st.subheader(f'Berikut adalah grafik dari negara {negara}.')
+    st.subheader(f'Berikut adalah grafik dari produksi minyak mentah  {negara}.')
 
     origin = df[(df["name"] == negara)]
     
@@ -67,10 +61,9 @@ def no1a():
 
     a = origin.set_index("tahun").rename(columns={"produksi": "Produksi"})["Produksi"]
 
-#No 1.B
+#1 Bagian B
 def no1b():
 
-    #command control streamlit
     jumlah_negara = st.sidebar.selectbox("Pilih negara", range(1, len(list_negara)), 9)
     tahun = st.sidebar.selectbox("Pilih tahun", range(1971, 2016), 44)
 
@@ -81,7 +74,6 @@ def no1b():
 
     source = res.iloc[:jumlah_negara]
     
-    #making graph with altair
     bars = alt.Chart(source).mark_bar().encode(
         x='produksi',
         y=alt.Y(
@@ -104,10 +96,10 @@ def no1b():
     st.altair_chart(chart, use_container_width=True)
     
 
-#No 1.C
+#1 Bagian C
 def no1c():
 
-    #command control streamlit
+
     jumlah_negara = st.sidebar.selectbox("Pilih negara", range(1, len(list_negara)), 9)
 
     st.subheader(f'{jumlah_negara} besar negara dengan jumlah produksi keseluruhan terbesar')
@@ -117,7 +109,6 @@ def no1c():
 
     source = res.iloc[:jumlah_negara]
     
-    #making graph with altair
     bars = alt.Chart(source).mark_bar().encode(
         x='produksi',
         y=alt.Y(
@@ -143,7 +134,7 @@ def no1c():
     st.dataframe(source.rename(columns={"name": "Negara", "produksi":"Total Produksi"}))
 
 
-#No 1.D
+#1 Bagian D
 def no1d():
 
     tahun = st.sidebar.selectbox("Pilih tahun", range(1971, 2016), 44)
@@ -214,7 +205,7 @@ def home():
 
     st.markdown("<h1 style='text-align: center; color: black;'> Najmi Syihab </h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: center; color: black;'> 12220129 </h2>", unsafe_allow_html=True)
-    st.markdown("<h3 style='text-align: center; color: black;'> Streamlit produksi minyak mentah </h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center; color: black;'> STREAMLIT NEGARA PRODUKSI MINYAK MENTAH </h3>", unsafe_allow_html=True)
 
 #fungsi di panggil dibawah
 
@@ -225,7 +216,7 @@ FITUR = OrderedDict(
     [
         ("HOME", (home, None)),
         (
-            "Fitur 1.a",
+            "1A",
             (
                 no1a,
                 """
@@ -236,7 +227,7 @@ FITUR = OrderedDict(
             ),
         ),
         (
-            "Fitur 1.b",
+            "1B",
             (
                 no1b,
                 """
@@ -246,7 +237,7 @@ FITUR = OrderedDict(
             ),
         ),
         (
-            "Fitur 1.c",
+            "1C",
             (
                 no1c,
                 """
@@ -256,7 +247,7 @@ FITUR = OrderedDict(
             ),
         ),
         (
-            "Fitur 1.d",
+            "ID",
             (
                 no1d,
                 """
