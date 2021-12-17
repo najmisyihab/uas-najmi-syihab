@@ -212,8 +212,9 @@ def no1d():
 #home
 def home():
 
-    st.markdown("<h1 style='text-align: center; color: black;'> Nama Kamu </h1>", unsafe_allow_html=True)
-    st.markdown("<h2 style='text-align: center; color: black;'> Streamlit produksi minyak mentah </h2>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: black;'> Najmi Syihab </h1>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center; color: black;'> 12220129 </h2>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center; color: black;'> Streamlit produksi minyak mentah </h3>", unsafe_allow_html=True)
 
 #fungsi di panggil dibawah
 
