@@ -19,8 +19,8 @@ from PIL import Image
 
 import base64
 
-main_bg = "background.jpg"
-main_bg_ext = "jpg"
+main_bg = "background.jpeg"
+main_bg_ext = "jpeg"
 
 st.markdown(
     f"""
