@@ -262,7 +262,7 @@ FITUR = OrderedDict(
 
 
 def run():
-    demo_name = st.sidebar.selectbox("nomor yang  diinginkan", list(FITUR.keys()), 0)
+    demo_name = st.sidebar.selectbox("Menu", list(FITUR.keys()), 0)
 
     demo = FITUR[demo_name][0]
     if demo_name == "HOME":
