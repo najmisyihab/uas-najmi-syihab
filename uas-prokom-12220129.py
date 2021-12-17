@@ -215,7 +215,7 @@ LOGGER = get_logger(__name__)
 
 FITUR = OrderedDict(
     [
-        ("Halaman Utama", color : green , (home, None)),
+        ("Halaman Utama", (home, None)),
         (
             "1A",
             (
