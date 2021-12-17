@@ -122,7 +122,7 @@ def no1c():
     text = bars.mark_text(
         align='left',
         baseline='middle',
-        color='white',
+        color='black',
         dx=3 
     ).encode(
         text='produksi'
