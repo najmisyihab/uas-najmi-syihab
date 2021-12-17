@@ -46,7 +46,7 @@ def no1a():
     data_negara = df["name"].unique().tolist()
     data_negara.sort()
 
-    negara = st.sidebar.selectbox("Pilih Negara yang ingin dilihat grafiknya", data_negara)
+    negara = st.sidebar.selectbox("Pilih Negara", data_negara)
 
     kode = df1[(df1["name"] == negara)]["alpha-3"].to_list()[0]
     df_states = df2[(df2.kode_negara == kode)].copy().set_index("tahun")
@@ -65,8 +65,8 @@ def no1a():
 #1 Bagian B
 def no1b():
 
-    jumlah_negara = st.sidebar.selectbox("Pilih negara", range(1, len(list_negara)), 9)
-    tahun = st.sidebar.selectbox("Pilih tahun", range(1971, 2016), 44)
+    jumlah_negara = st.sidebar.selectbox("Negara", range(1, len(list_negara)), 9)
+    tahun = st.sidebar.selectbox("Tahun", range(1971, 2016), 44)
 
     st.subheader(f'{jumlah_negara} besar negara dengan jumlah produksi terbesar pada tahun {tahun}')
 
@@ -103,7 +103,7 @@ def no1c():
 
     jumlah_negara = st.sidebar.selectbox("Pilih negara", range(1, len(list_negara)), 9)
 
-    st.subheader(f'{jumlah_negara} besar negara dengan jumlah produksi keseluruhan terbesar')
+    st.subheader(f'{jumlah_negara} besar jumlah produksi keseluruhan terbesar')
 
     res = df[["name", "produksi"]].groupby(['name'])['produksi'].sum().reset_index().sort_values(by=['produksi'], ascending=False).reset_index(drop=True)
     res.index += 1
