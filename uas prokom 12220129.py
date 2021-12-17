@@ -1,3 +1,8 @@
+# NAMA : NAJMI SYIHAB
+# NIM : 12220129
+# UAS PEMROGRAMAN KOMPUTER
+
+
 #panggil beberapa library yang dibutuhkan
 
 import streamlit as st
